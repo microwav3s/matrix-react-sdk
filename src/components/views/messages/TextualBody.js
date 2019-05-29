@@ -448,6 +448,11 @@ module.exports = React.createClass({
         this.setState({editedMarkerHovered: false});
     },
 
+    _openHistoryDialog: async function() {
+        const MessageEditHistoryDialog = sdk.getComponent("views.dialogs.MessageEditHistoryDialog");
+        Modal.createDialog(MessageEditHistoryDialog, {mxEvent: this.props.mxEvent});
+    },
+
     _renderEditedMarker: function() {
         let editedTooltip;
         if (this.state.editedMarkerHovered) {
@@ -462,6 +467,7 @@ module.exports = React.createClass({
         return (
             <div
                 key="editedMarker" className="mx_EventTile_edited"
+                onClick={this._openHistoryDialog}
                 onMouseEnter={this._onMouseEnterEditedMarker}
                 onMouseLeave={this._onMouseLeaveEditedMarker}
             >{editedTooltip}<span>{`(${_t("edited")})`}</span></div>
