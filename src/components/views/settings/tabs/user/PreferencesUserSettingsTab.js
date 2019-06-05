@@ -98,7 +98,7 @@ export default class PreferencesUserSettingsTab extends React.Component {
     };
 
     _onMinimizeToTrayChange = (checked) => {
-        PlatformPeg.get().setMinimizeToTrayEnabled(cstatehecked).then(() => this.setState({minimizeToTray: checked}));
+        PlatformPeg.get().setMinimizeToTrayEnabled(checked).then(() => this.setState({minimizeToTray: checked}));
     };
 
     _onAutocompleteDelayChange = (e) => {
