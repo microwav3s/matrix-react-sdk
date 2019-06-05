@@ -384,4 +384,12 @@ export const SETTINGS = {
         default: false,
         controller: new LowBandwidthController(),
     },
+    "fontSize": {
+        supportedLevels: LEVELS_ACCOUNT_SETTINGS,
+        default: "12",
+    },
+    "fontType": {
+        supportedLevels: LEVELS_ACCOUNT_SETTINGS,
+        default: "Roboto Mono",
+    },
 };

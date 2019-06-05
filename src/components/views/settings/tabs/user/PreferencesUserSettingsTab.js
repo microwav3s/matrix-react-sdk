@@ -28,6 +28,8 @@ export default class PreferencesUserSettingsTab extends React.Component {
         'MessageComposerInput.autoReplaceEmoji',
         'MessageComposerInput.suggestEmoji',
         'sendTypingNotifications',
+        // Font Type
+        // Font Size
     ];
 
     static TIMELINE_SETTINGS = [
@@ -66,6 +68,8 @@ export default class PreferencesUserSettingsTab extends React.Component {
             autoLaunchSupported: false,
             minimizeToTray: true,
             minimizeToTraySupported: false,
+            fontType: SettingsStore.getValueAt(SettingLevel.ACCOUNT, "fontType"),
+            fontSize: SettingsStore.getValueAt(SettingLevel.ACCOUNT, "fontSize"),
         };
     }
 
@@ -94,11 +98,29 @@ export default class PreferencesUserSettingsTab extends React.Component {
     };
 
     _onMinimizeToTrayChange = (checked) => {
-        PlatformPeg.get().setMinimizeToTrayEnabled(checked).then(() => this.setState({minimizeToTray: checked}));
+        PlatformPeg.get().setMinimizeToTrayEnabled(cstatehecked).then(() => this.setState({minimizeToTray: checked}));
     };
 
     _onAutocompleteDelayChange = (e) => {
         SettingsStore.setValue("autocompleteDelay", null, SettingLevel.DEVICE, e.target.value);
+    };
+    
+    _onFontTypeChange = (e) => {
+        const newFontType = e.target.value;
+        if (this.state.fontType === newFontType) return;
+
+        SettingsStore.setValue("fontType", null, SettingLevel.ACCOUNT, newFontType);
+        this.setState({fontType: newfontType});
+        // Execute refresh
+    };
+    
+    _onFontSizeChange = (e) => {
+        const newFontSize = e.target.value;
+        if (this.state.fontSize === newFontSize) return;
+
+        SettingsStore.setValue("fontSize", null, SettingLevel.ACCOUNT, newFontSize);
+        this.setState({fontSize: newfontSize});
+        // Execute refresh
     };
 
     _renderGroup(settingIds) {
@@ -127,7 +149,23 @@ export default class PreferencesUserSettingsTab extends React.Component {
                 <div className="mx_SettingsTab_section">
                     <span className="mx_SettingsTab_subheading">{_t("Composer")}</span>
                     {this._renderGroup(PreferencesUserSettingsTab.COMPOSER_SETTINGS)}
-
+                
+                    <Field id="fontType" label={_t("Font Type")} element="select"
+                          value={this.state.fontType} onChange={this._onFontTypeChange}>
+                       <option value="opensans">{_t("Open Sans")}</option>
+                       <option value="robotomono">{_t("Roboto Mono")}</option>
+                       <option value="nunito">{_t("Nunito")}</option>
+                       <option value="Unifont">{_t("Unifont")}</option>
+                    </Field>
+                    
+                    <Field id="fontSize" label={_t("Font Size")} element="select"
+                          value={this.state.fontSize} onChange={this._onFontSizeChange}>
+                       <option value="small">{_t("Small")}</option>
+                       <option value="medium">{_t("Medium")}</option>
+                       <option value="large">{_t("Large")}</option>
+                       <option value="huge">{_t("Huge")}</option>
+                    </Field>
+                    
                     <span className="mx_SettingsTab_subheading">{_t("Timeline")}</span>
                     {this._renderGroup(PreferencesUserSettingsTab.TIMELINE_SETTINGS)}
 
