@@ -1639,5 +1639,15 @@
     "If you didn't remove the recovery method, an attacker may be trying to access your account. Change your account password and set a new recovery method immediately in Settings.": "If you didn't remove the recovery method, an attacker may be trying to access your account. Change your account password and set a new recovery method immediately in Settings.",
     "Failed to set direct chat tag": "Failed to set direct chat tag",
     "Failed to remove tag %(tagName)s from room": "Failed to remove tag %(tagName)s from room",
-    "Failed to add tag %(tagName)s to room": "Failed to add tag %(tagName)s to room"
+    "Failed to add tag %(tagName)s to room": "Failed to add tag %(tagName)s to room",
+    "Font Type": "Font Type",
+    "Open Sans":"Open Sans",
+    "Roboto Mono": "Roboto Mono",
+    "Nunito": "Nunito",
+    "Unifont": "Unifont",
+    "Font Size": "Font Size",
+    "Small": "Small",
+    "Medium":"Medium",
+    "Large":"Large",
+    "Huge":"Huge"
 }
