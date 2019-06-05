@@ -386,10 +386,10 @@ export const SETTINGS = {
     },
     "fontSize": {
         supportedLevels: LEVELS_ACCOUNT_SETTINGS,
-        default: "12",
+        default: "medium",
     },
     "fontType": {
         supportedLevels: LEVELS_ACCOUNT_SETTINGS,
-        default: "Roboto Mono",
+        default: "Open Sans",
     },
 };
